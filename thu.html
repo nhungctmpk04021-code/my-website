@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Câu hỏi về thiên nhiên</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #e8f5e9;
+      text-align: center;
+      padding: 50px;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>🌿 Câu hỏi về thiên nhiên 🌿</h2>
+    <p id="question">Đang tải...</p>
+    <button onclick="loadQuestion()">Lấy câu hỏi mới</button>
+  </div>
+
+  <script>
+    async function loadQuestion() {
+      const res = await fetch("https://asia-southeast1-xxx.cloudfunctions.net/natureQuestion");
+      const data = await res.json();
+      document.getElementById("question").innerText = data.question;
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
